@@ -34,6 +34,10 @@ about:
   summary: Commands for Manipulating POSIX Access Control Lists
 
 extra:
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/47182
+    reason: Dependency for systemd
   recipe-maintainers:
+    - ianaobi
     - Tobias-Fischer
     - wolfv
