@@ -1,22 +1,23 @@
-{% set name = "libacl" %}
+{% set name = "acl" %}
 {% set version = "2.3.2" %}
 
 package:
-  name: {{ name }}
+  name: lib{{ name }}
   version: {{ version }}
 
 source:
-  - url: http://download.savannah.gnu.org/releases/acl/acl-{{ version }}.tar.xz
-    sha256: 97203a72cae99ab89a067fe2210c1cbf052bc492b479eca7d226d9830883b0bd
+  url: http://download.savannah.gnu.org/releases/{{ name }}/{{ name }}-{{ version }}.tar.xz
+  sha256: 97203a72cae99ab89a067fe2210c1cbf052bc492b479eca7d226d9830883b0bd
 
 build:
   number: 0
   skip: true  # [not linux]
   run_exports:
-    - {{ pin_subpackage(name, max_pin='x.x') }}
+    - {{ pin_subpackage('libacl', max_pin='x.x') }}
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - autoconf
     - make
@@ -28,10 +29,14 @@ test:
     - test -f ${PREFIX}/include/sys/acl.h
 
 about:
-  home: https://savannah.nongnu.org/projects/acl/
+  home: https://savannah.nongnu.org/projects/acl
   license: GPL-2.0-or-later
+  license_family: GPL
   license_file: doc/COPYING
   summary: Commands for Manipulating POSIX Access Control Lists
+  description: Commands for Manipulating POSIX Access Control Lists
+  doc_url: https://savannah.nongnu.org/projects/acl
+  dev_url: https://savannah.nongnu.org/git/?group=acl
 
 extra:
   recipe-maintainers:
