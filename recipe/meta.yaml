@@ -39,6 +39,10 @@ about:
   dev_url: https://savannah.nongnu.org/git/?group=acl
 
 extra:
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/47182
+    reason: Dependency for systemd
   recipe-maintainers:
+    - ianaobi
     - Tobias-Fischer
     - wolfv
